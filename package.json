@@ -1,0 +1,10 @@
+{
+  "name": "subinac-distribute-hotfix",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "stellar-sdk": "^10.5.1"
+  }
+}
