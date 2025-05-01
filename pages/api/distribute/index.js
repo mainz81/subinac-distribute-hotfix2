@@ -16,19 +16,18 @@ export default async function handler(req, res) {
   try {
     const sourceKeypair = Keypair.fromSecret(process.env.PRIVATE_KEY);
     const sourcePublicKey = sourceKeypair.publicKey();
-
     const account = await server.loadAccount(sourcePublicKey);
     const fee = await server.fetchBaseFee();
 
-    const totalBalance = account.balances.find(b => b.asset_type === 'native')?.balance;
-    const available = parseFloat(totalBalance) - 1; // leave 1 XLM buffer
+    const totalBalance = account.balances.find(b => b.asset_type === 'native').balance;
+    const available = parseFloat(totalBalance) - 1; // buffer
 
     const distribution = {
-      "GAGJH72X5HXWTUBPDBLAY2H5EHYOWZJVVKTFRTREODAS44N4EI3UUDVI": 0.2125, // Michael
+      "GA6HJZK5XU73QH46VC2Y5SFWXTRFBQOAS44QH42LU3UU2HV": 0.2125, // Michael
       "GA2WZSDGZZETJQ4GSM4OHFKTYC7ZIS5JE227QMBNH3YL24DU2MGQ2WR5": 0.2125, // Canibus
       "GA2ZTYJZVFLQ7XY3T7QRXGSGNEG46DG3TKSYL7JKGXOTJEVBHNFIPJWS": 0.2125, // Shan
       "GAZEKR2TL5LSJ2R2DGEPCF4OUBKPGGPVIOD2BLHXMQXXMURN6JBQO6SQ": 0.2125, // Phaze
-      "GAERT6JAYBF2RKO2SV4BOPH7NOTBV533UWNSXRTBJPJEXC4ZATULZIZX": 0.15   // Core Phore Tech
+      "GAERT6JAYBF2RKO2SV4BOPH7NOTBV533UWNSXRTBJPJEXC4ZATULZIZX": 0.15  // Core Phore Tech
     };
 
     const txBuilder = new TransactionBuilder(account, {
@@ -54,7 +53,6 @@ export default async function handler(req, res) {
       success: true,
       hash: result.hash
     });
-
   } catch (err) {
     console.error('Distribution error:', err);
     res.status(500).json({
