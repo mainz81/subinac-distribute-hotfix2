@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "functions": {
-    "api/distribute.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "pages/api/distribute.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/distribute",
+      "dest": "pages/api/distribute.js"
+    }
+  ]
 }
