@@ -1,6 +1,8 @@
 {
-  "name": "subinac-distribute-hotfix",
+  "name": "subinac-distribute-hotfix2",
   "version": "1.0.0",
+  "main": "api/distribute.js",
+  "type": "module",
   "scripts": {
     "start": "vercel dev"
   },

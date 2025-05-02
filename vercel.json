@@ -1,8 +1,7 @@
-// vercel.json
 {
   "version": 2,
   "functions": {
-    "api/distribute/index.js": {
+    "api/distribute.js": {
       "runtime": "nodejs18.x"
     }
   }
